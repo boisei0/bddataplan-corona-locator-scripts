@@ -170,3 +170,9 @@ print('[*] Voor veiligheidsregio NOG, op 2020-07-16:')
 print(f"[+] Gemiddelde op basis cumulatief RIVM: {rivm_3day_avg['VR06']['2020-07-16']}")
 print(f"[+] Gemiddelde op basis cumulatief RIVM, maar dag < 0 => dag = 0: {rivm_3day_avg_opgenomen['VR06']['2020-07-16']}")
 print(f"[+] Gemiddelde van Corona Dashboard: {cd['VR06']['2020-07-16']}")
+
+
+for vrcode in rivm_3day_avg.keys():
+    for datum in rivm_3day_avg[vrcode]:
+        if rivm_3day_avg_opgenomen[vrcode][datum] != cd[vrcode][datum]:
+            print(f"Discrepantie bij {vr_lookup_table[vrcode]} op {datum}; RIVM: {rivm_3day_avg_opgenomen[vrcode][datum]}, CoronaDashboard: {cd[vrcode][datum]}")
